@@ -1,0 +1,30 @@
+{
+    "name": "barrilet-io-web-server",
+    "version": "1.0.0",
+    "description": "WebServer para el Ardulete Challenge Xela 2016",
+    "main": "server.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node server.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/racifuina/barrilet-io.git"
+    },
+    "keywords": [
+    "ardulete"
+  ],
+    "author": "Rigoberto Acifuina (@Rigo_Dev)",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/racifuina/barrilet-io/issues"
+    },
+    "homepage": "https://github.com/racifuina/barrilet-io#readme",
+    "dependencies": {
+        "body-parser": "^1.15.2",
+        "ejs": "^2.5.2",
+        "express": "*",
+        "express-session": "*",
+        "socket.io": "*"
+    }
+}
