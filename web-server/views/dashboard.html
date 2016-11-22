@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Barrilet.io</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!--  Favicon  -->
+    <link rel="apple-touch-icon" sizes="57x57" href="images/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="images/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="images/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="images/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="images/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="images/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="images/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="images/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+    <link rel="manifest" href="manifest.json">
+    <meta name="msapplication-TileColor" content="#2EC0F9">
+    <meta name="msapplication-TileImage" content="images/ms-icon-144x144.png">
+    <meta name="theme-color" content="#2EC0F9">
+</head>
+
+<body class="background">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a href="/" class="navbar-brand "><strong>Barrilet.io</strong></a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><strong>CONEXIÓN</strong></h3>
+                    </div>
+                    <div class="panel-body top-panel-body text-center">
+                        <h1><i class="fa fa-thumbs-o-up"></i> <small>CONECTADO</small></h1>
+                        <h1><i class="fa fa-thumbs-o-down"></i> <small>DESCONECTADO</small></h1>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><strong>AMBIENTE</strong></h3>
+                    </div>
+                    <div class="panel-body top-panel-body">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <h3 class="text-center">Temperatura</h3>
+                                <div class="center-block">
+                                    <div id="temp-level" class="round-bar"></div>
+                                </div>
+
+                            </div>
+                            <div class="col-lg-6">
+                                <h3 class="text-center">Humedad</h3>
+                                <div id="hum-level" class="round-bar"></div>
+                            </div>
+                        </div>
+                        <label></label>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><strong>ACELEROMETRO</strong></h3>
+                    </div>
+                    <div class="panel-body bottom-panel-body">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <h3 class="text-center">Eje X</h3>
+                            </div>
+                            <div class="col-lg-4">
+                                <h3 class="text-center">Eje Y</h3>
+                            </div>
+                            <div class="col-lg-4">
+                                <h3 class="text-center">Eje Z</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><strong>ALTITUD</strong></h3>
+                    </div>
+                    <div class="panel-body bottom-panel-body">
+                        <h1 class="text-center">150 cm</h1>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script src="/js/socket.io-1.3.7.js"></script>
+    <script src="/js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/moment.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/progressbar.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+
+</html>

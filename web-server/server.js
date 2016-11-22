@@ -18,11 +18,11 @@ var deviceConnections = {};
 
 //home
 app.get('/', function (req, res) {
-    res.send("home");
+    res.sendFile(__dirname + '/views/dashboard.html');
 });
 //dev-monitor
 app.get('/monitor', function (req, res) {
-    res.send("monitor");
+    res.sendFile(__dirname + '/views/monitor.html');
 });
 
 //404
