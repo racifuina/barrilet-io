@@ -5,14 +5,11 @@
 
 body {
     padding-top: 70px;
+    padding-bottom: 170px;
 }
 
 .background {
     background: #000000;
-}
-
-.roboto-font {
-    font-family: 'Roboto', sans-serif;
 }
 
 .top-panel-body {
@@ -20,7 +17,7 @@ body {
 }
 
 .bottom-panel-body {
-    min-height: 150px;
+    min-height: 120px;
 }
 
 .round-bar {
@@ -31,4 +28,7 @@ body {
 
 .progressbar-text {
     font-size: 34px;
+}
+.vcentered {
+   padding: 70px 30px;
 }
