@@ -26,9 +26,9 @@
     <link rel="icon" type="image/png" sizes="96x96" href="images/favicon-96x96.png">
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
     <link rel="manifest" href="manifest.json">
-    <meta name="msapplication-TileColor" content="#2EC0F9">
+    <meta name="msapplication-TileColor" content="#222222">
     <meta name="msapplication-TileImage" content="images/ms-icon-144x144.png">
-    <meta name="theme-color" content="#2EC0F9">
+    <meta name="theme-color" content="#222222">
 </head>
 
 <body class="background">
@@ -42,7 +42,7 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-lg-4">
+            <div class="col-xs-12 col-sm-3 col-md-4 col-lg-4">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h3 class="panel-title"><strong>CONEXIÓN</strong></h3>
@@ -53,27 +53,22 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-8">
+            <div class="col-xs-12 col-sm-9 col-md-8 col-lg-8">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h3 class="panel-title"><strong>AMBIENTE</strong></h3>
                     </div>
                     <div class="panel-body top-panel-body">
                         <div class="row">
-                            <div class="col-lg-6">
+                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                                 <h3 class="text-center">Temperatura</h3>
-                                <div class="center-block">
-                                    <div id="temp-level" class="round-bar"></div>
-                                </div>
-
+                                <div id="temp-level" class="round-bar"></div>
                             </div>
-                            <div class="col-lg-6">
+                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                                 <h3 class="text-center">Humedad</h3>
                                 <div id="hum-level" class="round-bar"></div>
                             </div>
                         </div>
-                        <label></label>
-
                     </div>
                 </div>
             </div>
@@ -112,6 +107,17 @@
 
         </div>
     </div>
+
+    <nav class="navbar navbar-default navbar-fixed-bottom">
+        <div class="container">
+            <div class="navbar-header">
+                <p class="navbar-text">
+                    <a href="https://racifuina.github.io" class="fa fa-globe" target="_blank"></a>
+                    <a href="https://github.com/racifuina" class="fa fa-github" target="_blank"></a>
+                    <a href="https://twitter.com/Rigo_Dev" class="fa fa-twitter" target="_blank"></a> Creado por Rigoberto Acifuina para el Ardulete Challenge Xela 2016 </p>
+            </div>
+        </div>
+    </nav>
     <script src="/js/socket.io-1.3.7.js"></script>
     <script src="/js/jquery.min.js"></script>
     <script type="text/javascript" src="js/moment.js"></script>

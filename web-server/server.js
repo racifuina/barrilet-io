@@ -32,7 +32,7 @@ app.get('*', function (req, res) {
 
 //Socket.io Service
 io.on("connection", function (socket) {
-
+    console.log("new socket.io client")
     socket.emit("connectionsUpdated", {
         "cantidad": connections_number
     });
