@@ -5,7 +5,7 @@
 
 body {
     padding-top: 70px;
-    padding-bottom: 170px;
+    /*    padding-bottom: 170px;*/
 }
 
 .background {
@@ -20,6 +20,10 @@ body {
     min-height: 120px;
 }
 
+#panel-conexion {
+    height: 300px;
+}
+
 .round-bar {
     margin: auto;
     width: 200px;
@@ -29,6 +33,19 @@ body {
 .progressbar-text {
     font-size: 34px;
 }
+
 .vcentered {
-   padding: 70px 30px;
+    padding: 70px 30px;
+}
+
+@media screen and (max-width: 765px) {
+    #panel-conexion {
+        height: 120px;
+    }
+    .vcentered {
+        padding: 0px 30px;
+    }
+    #bottom-navbar {
+        display: none;
+    }
 }
