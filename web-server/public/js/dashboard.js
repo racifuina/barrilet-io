@@ -26,9 +26,9 @@ var humLevel = new ProgressBar.Circle("#hum-level", {
 
 socket.on("currentDashboard", function(newData) {
     if (newData.conectado) {
-        $("#conectado").html("<i class='fa fa-thumbs-o-up'></i> <small>CONECTADO</small>");
+        $("#conectado").html("<i class='fa fa-thumbs-o-up' style='color:green'></i> <small style='color:green'>CONECTADO</small>");
     } else {
-        $("#conectado").html("<i class='fa fa-thumbs-o-down'></i> <small>DESCONECTADO</small>");
+        $("#conectado").html("<i class='fa fa-thumbs-o-down' style='color:red'></i> <small style='color:red'>DESCONECTADO</small>");
     }
 
     tempLevel.animate(newData.temperatura); // Number from 0.0 to 1.0
