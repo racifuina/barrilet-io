@@ -8,15 +8,15 @@ var mensajesMonitor = [];
 app.use(express.static('public'));
 
 var currentData = {
-    conectado: false,
-    temperatura: 0,
-    humedad: 0,
-    eje_x: 0.0,
-    eje_y: 0.0,
-    eje_z: 0.0,
-    altitud: 0
-}
-//VARIABLES PARA TCP.
+        conectado: false,
+        temperatura: 0,
+        humedad: 0,
+        eje_x: 0.0,
+        eje_y: 0.0,
+        eje_z: 0.0,
+        altitud: 0
+    }
+    //VARIABLES PARA TCP.
 var TCP_PORT = process.env.TCP_PORT || 3150;
 var HTTP_PORT = process.env.PORT || 8080;
 var connections_number = 0;
@@ -105,7 +105,8 @@ net.createServer(function (connection) {
         //CONVIRTIENDO DATA DE STRING A JSON.
         var telemetry_data = querystring.parse(data_str);
 
-        if (telemetry_data.id == undefined) {
+
+        if (telemetry_data.id == undefined || telemetry_data.t == undefined || telemetry_data.h == undefined || telemetry_data.x == undefined || telemetry_data.y == undefined ||  telemetry_data.z == undefined ||   telemetry_data.a == undefined) {
             //If the keys have undefined data, do nothing.
             console.log("undefined data");
             connection.destroy();
@@ -140,9 +141,14 @@ net.createServer(function (connection) {
         }
 
         if (telemetry_data.id == "0001") {
-
+            currentData.temperatura = telemetry_data.t;
+            currentData.humedad = telemetry_data.h;
+            currentData.eje_x = telemetry_data.x;
+            currentData.eje_y = telemetry_data.y;
+            currentData.eje_z = telemetry_data.z;
+            currentData.altitud = telemetry_data.a;
+            io.emit("currentDashboard", currentData);
         }
-
 
     });
 

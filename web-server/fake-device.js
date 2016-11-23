@@ -18,13 +18,15 @@ socket.on("data", function (data) {
 });
 
 socket.on("connect", function (data) {
-    var nuevoPeso = (Math.random() * (32 - 27) + 27).toFixed(2)
-    console.log("Client: -> " + "id=" + id + "&w=" + nuevoPeso + "&d=3&   sending random");
-    socket.write("id=" + id + "&w=" + nuevoPeso + "&d=3&");
+    var nuevoPeso = Number(Math.random() * (100 - 0) + 0).toFixed(2);
+    var nuevoPorcentaje = Number(Math.random() * (54 - 0) + 0).toFixed(2)
+    console.log("Client: -> " + "id=" + id + "&t=" + nuevoPorcentaje + "&h=" + nuevoPorcentaje + "&a=" + nuevoPeso + "&x=" + nuevoPeso + "&y=" + nuevoPeso + "&z=" + nuevoPeso + "&");
+    socket.write("id=" + id + "&t=" + nuevoPeso / 100 + "&h=" + nuevoPeso / 100 + "&a=" + nuevoPeso + "&x=" + nuevoPeso + "&y=" + nuevoPeso + "&z=" + nuevoPeso + "&");
 });
 
 setInterval(function () {
-    var nuevoPeso = (Math.random() * (32 - 27) + 27).toFixed(2)
-    console.log("Client: -> " + "id=" + id + "&w=" + nuevoPeso + "&d=3&   sending random");
-    socket.write("id=" + id + "&w=" + nuevoPeso + "&d=3&");
+    var nuevoPeso = Number(Math.random() * (100 - 0) + 0).toFixed(2);
+    var nuevoPorcentaje = Number(Math.random() * (54 - 0) + 0).toFixed(2)
+    console.log("Client: -> " + "id=" + id + "&t=" + nuevoPorcentaje + "&h=" + nuevoPorcentaje + "&a=" + nuevoPeso + "&x=" + nuevoPeso + "&y=" + nuevoPeso + "&z=" + nuevoPeso + "&");
+    socket.write("id=" + id + "&t=" + nuevoPeso / 100 + "&h=" + nuevoPeso / 100 + "&a=" + nuevoPeso + "&x=" + nuevoPeso + "&y=" + nuevoPeso + "&z=" + nuevoPeso + "&");
 }, 5000);
