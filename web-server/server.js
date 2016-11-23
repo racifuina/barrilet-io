@@ -7,6 +7,15 @@ var net = require('net');
 var mensajesMonitor = [];
 app.use(express.static('public'));
 
+var currentData = {
+    conectado: false,
+    temperatura: 0,
+    humedad: 0,
+    eje_x: 0.0,
+    eje_y: 0.0,
+    eje_z: 0.0,
+    altitud: 0
+}
 //VARIABLES PARA TCP.
 var TCP_PORT = process.env.TCP_PORT || 3150;
 var HTTP_PORT = process.env.PORT || 8080;
@@ -47,6 +56,10 @@ io.on("connection", function (socket) {
         io.emit("newDatafromTCP", {
             "data": mensajesMonitor
         });
+    });
+
+    socket.on("getCurrentDashboard", function (data) {
+        socket.emit("currentDashboard", currentData);
     });
 
 });
@@ -95,6 +108,7 @@ net.createServer(function (connection) {
         if (telemetry_data.id == undefined) {
             //If the keys have undefined data, do nothing.
             console.log("undefined data");
+            connection.destroy();
             return;
         } else {
             console.log("New Good DATA");
@@ -102,25 +116,45 @@ net.createServer(function (connection) {
             if (typeof deviceConnections[telemetry_data.id] === "undefined") {
                 //if the connection is not on in the object, Add it to the deviceConnections object.
                 deviceConnections[telemetry_data.id] = connection;
+                connection.IDENTIFICADOR = telemetry_data.id;
+                currentData.conectado = true;
             } else {
                 //If there is a connection with the same ID in the object, check if it is the same as this one.
                 //If it is different close and destroy the previous one, and replace it with the new one.
                 //Else do nothing.
-                console.log("existing key")
+                connection.IDENTIFICADOR = telemetry_data.id;
                 if (deviceConnections[telemetry_data.id] !== connection) {
-                    console.log("different connection value")
-                    deviceConnections[telemetry_data.id].destroy();
+                    try {
+                        deviceConnections[telemetry_data.id].destroy();
+                    } catch (e) {
+                        console.log("error al destruir");
+                    }
+                    connection.IDENTIFICADOR = telemetry_data.id;
                     deviceConnections[telemetry_data.id] = connection;
+                    currentData.conectado = true;
                 } else {
                     console.log("same connection value");
                 }
             }
+            io.emit("currentDashboard", currentData);
         }
+
+        if (telemetry_data.id == "0001") {
+
+        }
+
+
     });
 
     connection.on('close', function () {
         connections_number--;
-        newMonitorInfo("DEVICE DISCONNECTED");
+        newMonitorInfo("DEVICE " + connection.IDENTIFICADOR + " DISCONNECTED");
+
+        if (connection.IDENTIFICADOR === "0001") {
+            currentData.conectado = false;
+            io.emit("currentDashboard", currentData);
+        }
+
         io.emit("connectionsUpdated", {
             "cantidad": connections_number
         });

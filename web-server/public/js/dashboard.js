@@ -1,11 +1,10 @@
 var socket = io();
 
 $(document).ready(function () {
-    $('[data-toggle="tooltip"]').tooltip();
     socket.emit("getCurrentDashboard");
 });
 
-var bar = new ProgressBar.Circle("#temp-level", {
+var tempLevel = new ProgressBar.Circle("#temp-level", {
     strokeWidth: 8,
     easing: 'easeInOut',
     duration: 1400,
@@ -15,7 +14,7 @@ var bar = new ProgressBar.Circle("#temp-level", {
     svgStyle: null
 });
 
-var hum = new ProgressBar.Circle("#hum-level", {
+var humLevel = new ProgressBar.Circle("#hum-level", {
     strokeWidth: 8,
     easing: 'easeInOut',
     duration: 1400,
@@ -25,16 +24,20 @@ var hum = new ProgressBar.Circle("#hum-level", {
     svgStyle: null
 });
 
-bar.animate(0.54); // Number from 0.0 to 1.0
-bar.setText("54 ºC"); // Number from 0.0 to 1.0
-hum.animate(0.34); // Number from 0.0 to 1.0
-hum.setText("34 %"); // Number from 0.0 to 1.0
+socket.on("currentDashboard", function(newData) {
+    if (newData.conectado) {
+        $("#conectado").html("<i class='fa fa-thumbs-o-up'></i> <small>CONECTADO</small>");
+    } else {
+        $("#conectado").html("<i class='fa fa-thumbs-o-down'></i> <small>DESCONECTADO</small>");
+    }
 
+    tempLevel.animate(newData.temperatura); // Number from 0.0 to 1.0
+    tempLevel.setText(newData.temperatura + " ºC"); // Number from 0.0 to 1.0
+    humLevel.animate(newData.humedad); // Number from 0.0 to 1.0
+    humLevel.setText(newData.humedad + " %");
 
-setTimeout(function () {
-    bar.animate(0.24); // Number from 0.0 to 1.0
-    bar.setText("24 ºC"); // Number from 0.0 to 1.0
-    hum.animate(0.84); // Number from 0.0 to 1.0
-    hum.setText("84 %"); // Number from 0.0 to 1.0
-
-}, 2000);
+    $("#eje-x").text(newData.eje_x);
+    $("#eje-y").text(newData.eje_y);
+    $("#eje-z").text(newData.eje_z);
+    $("#altitud").text(newData.altitud + " cm");
+});
